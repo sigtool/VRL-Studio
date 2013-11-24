@@ -105,6 +105,13 @@ import javax.swing.text.DefaultEditorKit;
 public class Studio extends javax.swing.JFrame {
 
     /**
+     * @return the latestInstance
+     */
+    public static Studio getLatestInstance() {
+        return latestInstance;
+    }
+
+    /**
      * @return the currentlyUpdating
      */
     public static boolean isCurrentlyUpdating() {
@@ -147,6 +154,8 @@ public class Studio extends javax.swing.JFrame {
     public static File APP_FOLDER;
     public static Logger logger;
     public static Handler fileHandler;
+    
+    private static Studio latestInstance;
 
     /**
      * Creates new form Studio
@@ -394,6 +403,8 @@ public class Studio extends javax.swing.JFrame {
 
         // we need to restrict access to versions due to plagiarism
         deleteAllVersionsMenuItem.setVisible(false);
+        
+        latestInstance = this;
     }
 
     private static void initLogger() {
